@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net45</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Copyright>Heather Floyd [www.HeatherFloyd.com]</Copyright>
+    <RepositoryType>GIT</RepositoryType>
+    <Authors>Heather Floyd</Authors>
+    <Company></Company>
+    <Product>Dragonfly</Product>
+    <Description>A page view tracker for Umbraco</Description>
+    <PackageLicenseUrl>https://github.com/hfloyd/Dragonfly.UmbracoPageCounter/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/hfloyd/Dragonfly.UmbracoPageCounter</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/hfloyd/Dragonfly.UmbracoPageCounter</RepositoryUrl>
+    <PackageId>Dragonfly.UmbracoPageCounter</PackageId>
+    <RootNamespace>Dragonfly</RootNamespace>
+    <AssemblyName>Dragonfly.UmbracoPageCounter</AssemblyName>
+    <PackageTags>Umbraco</PackageTags>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="UmbracoCms.Core" Version="7.12.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+
+  <Import Project="..\Custom.targets" />
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="XCOPY /y /r &quot;$(TargetDir)$(TargetFileName)&quot; &quot;C:\Users\Heather\NAS Folders\Active Projects\Webs\Clients\SUBT\SmokeSignals\sourcecode\SmokeSignals.Web\Bin\&quot;" />
+  </Target>
+</Project>
